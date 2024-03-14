@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <windows.h> 
+using namespace std;
+
+int main() {
+	system("Color 0D");
+    // random number generator
+    srand(time(0));
+    // Generate a random number between 1 and 100
+    int secretNumber = rand() % 100 + 1;
+    int guess;
+    int attempts;
+    attempts=0;
+    char choice;
+
+    cout << "Welcome to the Number Guessing Game!" << endl;
+    do {
+        cout << "Give it your best shot and guess a number (between 1 and 100): ";
+        cin >> guess;
+        // Check if the guess is too high, too low, or correct
+        if (guess > secretNumber) {
+            cout << "Too high! Try again." << endl;
+        } else if (guess < secretNumber) {
+            cout << "Too low! Try again." << endl;
+        } else {
+            cout << "Congratulations! You did it. "  << endl;
+            cout<<"Do you want to know in how many attempt you did it? (Y/N)"<<endl;
+            cin>>choice;
+            if (choice=='Y'){
+            	 cout << "You guessed the correct number in " << attempts + 1 << " attempts." << endl;
+			}
+			else if (choice=='N'){
+				cout<<"That's fantastic! You've got a knack for this guessing game!"<<endl;
+			}
+			else
+			cout<<"please make a right choice" <<endl;
+        }
+        attempts++;
+    } 
+	while (guess != secretNumber);
+    return 0;
+}
